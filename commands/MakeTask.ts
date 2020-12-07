@@ -26,7 +26,7 @@ export default class MakeTask extends BaseCommand {
 	/**
 	 * Execute command
 	 */
-	public async handle(): Promise<void> {
+	public async run(): Promise<void> {
 		try {
 			// parse respective templates
 			const templatePath = join(__dirname, `../templates/taskTemplate.txt`)

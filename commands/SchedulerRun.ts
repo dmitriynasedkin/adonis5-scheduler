@@ -23,7 +23,7 @@ export default class SchedulerRun extends BaseCommand {
 	/**
 	 * Execute command
 	 */
-	public async handle(): Promise<void> {
+	public async run(): Promise<void> {
 		this.logger.success('Scheduler are running...')
 		await this.scheduler.run()
 	}
