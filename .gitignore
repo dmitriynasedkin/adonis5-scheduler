@@ -8,5 +8,6 @@ coverage
 *.sublime-workspace
 *.log
 build
+test/_app
 dist
 shrinkwrap.yaml

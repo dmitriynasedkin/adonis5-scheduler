@@ -1,4 +1,4 @@
-import { BaseCommand, Kernel } from '@adonisjs/ace'
+import { BaseCommand, Kernel } from '@adonisjs/core/build/standalone'
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import Scheduler from './../src/Scheduler'
 /**

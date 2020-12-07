@@ -1,6 +1,4 @@
-require('ts-node').register({
-	files: true,
-})
+require('@adonisjs/require-ts/build/register')
 
 const { configure } = require('japa')
 configure({
@@ -12,7 +10,7 @@ configure({
 	],
 	after: [
 		async () => {
-			await require('fs-extra').remove(require('path').join(__dirname, 'tmp'))
+			await require('fs-extra').remove(require('path').join(__dirname, 'test/__app'))
 		},
 	],
 })

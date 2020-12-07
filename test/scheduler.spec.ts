@@ -1,10 +1,8 @@
 import { join } from 'path'
 import test from 'japa'
 import { Filesystem } from '@poppinss/dev-utils'
-import { Ioc } from '@adonisjs/fold/build/index'
-import { Application } from '@adonisjs/application/build/standalone'
+import { Application } from '@adonisjs/core/build/standalone'
 import Scheduler from '../src/Scheduler'
-import SchedulerProvider from '../providers/SchedulerProvider'
 import { BaseTask } from '../index'
 import { Logger } from '@adonisjs/logger/build/standalone'
 import { LoggerConfig } from '@ioc:Adonis/Core/Logger'
@@ -19,15 +17,37 @@ export const loggerConfig: LoggerConfig = {
 const fs = new Filesystem(join(__dirname, '__app'))
 test.group('Scheduler', () => {
 	function getApp() {
-		console.log('fs.basePath', fs.basePath)
-		const ioc = new Ioc()
-		ioc.bind('Adonis/Core/Application', () => new Application(join(fs.basePath, 'build'), {} as any, {} as any, {}))
-		ioc.bind('Adonis/Core/Logger', () => new Logger(loggerConfig))
-		const schedulerProvider = new SchedulerProvider(ioc)
-		schedulerProvider.register()
-		const scheduler: Scheduler = ioc.use('Adonis/Addons/Scheduler')
+		const app = new Application(fs.basePath, 'web', {})
+		const logger = new Logger(loggerConfig)
+		const scheduler = new Scheduler(app, logger)
+
 		return { scheduler }
 	}
+
+	test('Should register provider', async (assert) => {
+		await fs.add('.env', '')
+		await fs.add(
+			'config/app.ts',
+			`
+			export const appKey = 'averylong32charsrandomsecretkey'
+			export const http = {
+				cookie: {},
+				trustProxy: () => true
+			}
+		`
+		)
+
+		const app = new Application(fs.basePath, 'web', {
+			providers: ['@adonisjs/core', '../../providers/SchedulerProvider'],
+		})
+
+		app.setup()
+		app.registerProviders()
+		await app.bootProviders()
+
+		assert.instanceOf(app.container.use('Adonis/Addons/Scheduler'), Scheduler)
+	})
+
 	let isHandled = false
 	test('Should run with good tasks', async (assert) => {
 		const { scheduler } = getApp()

@@ -4,7 +4,7 @@ import { debug } from '../utils'
 import { RuntimeException } from '../Exceptions'
 import { BaseTask } from './Task'
 import NodeSchedule from 'node-schedule'
-import { IocContract } from '@adonisjs/fold'
+import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import Logger from '@ioc:Adonis/Core/Logger'
 
 /**
@@ -12,13 +12,11 @@ import Logger from '@ioc:Adonis/Core/Logger'
  * @description Task scheduler provider using node-schedule
  */
 export default class Scheduler {
-	private appRootPath: string
 	private tasksPath: string
 	private registeredTasks: BaseTask[]
 	/**
 	 */
-	constructor(appRootPath: string, protected container: IocContract, protected logger: typeof Logger) {
-		this.appRootPath = appRootPath
+	constructor(protected app: ApplicationContract, protected logger: typeof Logger) {
 		this.registeredTasks = []
 
 		this._configureTasksPath()
@@ -29,7 +27,7 @@ export default class Scheduler {
 	 * /<project-dir>/app/Tasks
 	 */
 	private _configureTasksPath() {
-		this.tasksPath = path.join(this.appRootPath, 'app', 'Tasks')
+		this.tasksPath = path.join(this.app.appRoot, 'app', 'Tasks')
 		this.tasksPath = path.normalize(this.tasksPath)
 	}
 
@@ -37,7 +35,7 @@ export default class Scheduler {
 	 * Load task file
 	 */
 	private async _fetchTask(task: typeof BaseTask) {
-		const taskInstance: BaseTask = this.container.make(task, [this.appRootPath + '/tmpLock', this.logger])
+		const taskInstance: BaseTask = this.app.container.make(task, [this.app.appRoot + '/tmpLock', this.logger])
 		const taskInstanceConstructor = taskInstance.constructor as typeof BaseTask
 		// Every task must expose a schedule
 		if (!('schedule' in taskInstanceConstructor)) {
