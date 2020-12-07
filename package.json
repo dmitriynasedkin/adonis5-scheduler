@@ -99,11 +99,11 @@
   },
   "adonisjs": {
     "commands": [
-      "adonis5-scheduler/build/commands"
+      "@adamcikado/adonis5-scheduler/build/commands"
     ],
-    "types": "adonis5-scheduler",
+    "types": "@adamcikado/adonis5-scheduler",
     "providers": [
-      "adonis5-scheduler"
+      "@adamcikado/adonis5-scheduler"
     ]
   },
   "dependencies": {

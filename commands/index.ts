@@ -1,1 +1,1 @@
-export default ['adonis5-scheduler/build/commands/MakeTask', 'adonis5-scheduler/build/commands/SchedulerRun']
+export default ['@adamcikado/adonis5-scheduler/build/commands/MakeTask', '@adamcikado/adonis5-scheduler/build/commands/SchedulerRun']

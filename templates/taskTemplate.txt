@@ -1,4 +1,4 @@
-import { BaseTask } from 'adonis5-scheduler/build'
+import { BaseTask } from '@adamcikado/adonis5-scheduler/build'
 
 export default class {{ filename }} extends BaseTask {
 	public static get schedule() {
