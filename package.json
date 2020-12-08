@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "This library provides an easy way to schedule recurring tasks for AdonisJS",
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
