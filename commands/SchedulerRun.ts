@@ -14,7 +14,7 @@ export default class SchedulerRun extends BaseCommand {
 
 	public static settings = {
 		loadApp: true,
-		stayAlive: true
+		stayAlive: true,
 	}
 
 	constructor(app: ApplicationContract, kernel: Kernel) {

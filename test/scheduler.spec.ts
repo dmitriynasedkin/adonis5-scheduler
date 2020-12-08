@@ -3,7 +3,7 @@ import test from 'japa'
 import { Filesystem } from '@poppinss/dev-utils'
 import { Application } from '@adonisjs/core/build/standalone'
 import Scheduler from '../src/Scheduler'
-import { BaseTask } from '../index'
+import { BaseTask } from '../src/Scheduler/Task'
 import { Logger } from '@adonisjs/logger/build/standalone'
 import { LoggerConfig } from '@ioc:Adonis/Core/Logger'
 

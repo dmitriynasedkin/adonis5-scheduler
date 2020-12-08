@@ -1,4 +1,4 @@
-import { RuntimeException as BasicRuntimeException } from '@adonisjs/generic-exceptions'
+import { Exception } from '@poppinss/utils'
 
 /**
  * Class to throw runtime exceptions
@@ -6,7 +6,7 @@ import { RuntimeException as BasicRuntimeException } from '@adonisjs/generic-exc
  * @class RuntimeException
  * @constructor
  */
-export class RuntimeException extends BasicRuntimeException {
+export class RuntimeException extends Exception {
 	/**
 	 * This exception is raised when task an undefined schedule
 	 */
