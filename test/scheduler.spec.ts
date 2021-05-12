@@ -57,7 +57,7 @@ test.group('Scheduler', () => {
 			}
 
 			public static get useLock() {
-				return true
+				return false
 			}
 
 			public async handle() {
