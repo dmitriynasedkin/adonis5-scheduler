@@ -10,7 +10,7 @@
     "pretest": "npm run lint",
     "test": "node japaFile.ts",
     "dev": "tsc --watch",
-    "clean": "del build",
+    "clean": "del /q /s build",
     "copyfiles": "copyfiles \"templates/**/*.txt\" \"instructions.md\" build",
     "compile": "npm run lint && npm run clean && tsc",
     "build": "npm run compile && npm run copyfiles",
