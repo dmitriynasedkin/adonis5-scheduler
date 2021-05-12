@@ -79,7 +79,7 @@
       ".ts"
     ]
   },
-  "main": "build/providers/SchedulerProvider.js",
+  "main": "build/index.js",
   "types": "build/adonis-typings/index.d.ts",
   "typings": "build/adonis-typings/index.d.ts",
   "files": [
@@ -100,11 +100,11 @@
   },
   "adonisjs": {
     "commands": [
-      "@adamcikado/adonis5-scheduler/build/commands"
+      "@dmitriynasedkin/adonis5-scheduler/build/commands"
     ],
-    "types": "@adamcikado/adonis5-scheduler",
+    "types": "@dmitriynasedkin/adonis5-scheduler",
     "providers": [
-      "@adamcikado/adonis5-scheduler"
+      "@dmitriynasedkin/adonis5-scheduler"
     ]
   },
   "dependencies": {
