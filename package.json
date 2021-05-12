@@ -1,5 +1,5 @@
 {
-  "name": "@adamcikado/adonis5-scheduler",
+  "name": "@dmitriynasedkin/adonis5-scheduler",
   "publishConfig": {
     "access": "public"
   },
