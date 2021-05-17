@@ -1,4 +1,4 @@
 export default [
-	'@adamcikado/adonis5-scheduler/build/commands/MakeTask',
-	'@adamcikado/adonis5-scheduler/build/commands/SchedulerRun',
+	'@dmitriynasedkin/adonis5-scheduler/build/commands/MakeTask',
+	'@dmitriynasedkin/adonis5-scheduler/build/commands/SchedulerRun',
 ]
