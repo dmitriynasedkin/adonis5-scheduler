@@ -7,7 +7,7 @@ export default class Locker implements LockerInterface {
 	constructor(private name: string, protected lockDir: string) {
 		this.lockFilename = this._getLockFilePath()
 		fs.mkdirSync(this.lockDir, { recursive: true })
-		// fs.writeFileSync(this.lockFilename, '')
+		fs.writeFileSync(this.lockFilename, '')
 	}
 
 	private _getLockFilePath() {

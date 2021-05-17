@@ -37,7 +37,7 @@ export class BaseTask {
 			.split(' ')
 			.splice(1)
 			.map((str) => str.toLowerCase())
-			.join(':')
+			.join('_')
 	}
 	protected _getLocker(): LockerInterface {
 		return new Locker(this.name, this.tmpPath)
